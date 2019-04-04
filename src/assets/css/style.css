@@ -1,0 +1,15 @@
+* {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+body {margin:0px; padding:0px;font-family:"微软雅黑", "Arial";background: #f7f7f7;color: #333;}
+ol,ul,li{ list-style:none;}
+img{ border:none;height: 100%;width: 100%}
+a{text-decoration:none; border:none;}
+select{border:0;}
+table,table td{border-collapse:collapse;}
+.fl{ float:left;}
+.fr{ float:right;}
+img{max-width:100%;font-size:0;}
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset !important;}
+input, button{outline: none;color: #333;}
+textarea, input, button{font-family:"微软雅黑", "Arial";}
+
+
