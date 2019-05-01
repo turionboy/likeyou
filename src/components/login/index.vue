@@ -89,7 +89,7 @@
 						}
 					});
 					that.$router.push({
-						path: '/'
+						path: '/admin'
 					});
 					// that.$axios.post('http://192.168.2.148:8001'+'/api/v1/auth_token/',data).then(res => {
 					// 	that.$store.commit('setLogin',{

@@ -1,7 +1,7 @@
 <template>
 	<header class="header background">
 		<div class="title">
-			<img src="/static/imgs/logo.jpg" alt="">
+			<img src="https://www.zhanjf.xyz/files/logo.jpg" alt="">
 			<span style="font-weight: bold;font-size: 1.3rem;color: orange">立刻游</span>
 		</div>
 		<div class="toolBar">
@@ -43,7 +43,7 @@
 						]
 					},{
 						id: 1,
-						text: '旅游产品',
+						text: '旅游胜地',
 						isShow: false,
 						child: [
 							{
@@ -142,4 +142,8 @@
 	.menu_item{background: #fff;display:flex;justify-content: center;align-items: center;cursor: pointer;z-index: 100;color: #333}
 	.bar_item:hover{background: orange; color: #fff}
 	.menu_item:hover{background: orange;color:#fff;}
+
+	@media screen and (max-width: 500px){
+		.toolBar{display: none;}
+	}
 </style>

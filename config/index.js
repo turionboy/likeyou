@@ -3,7 +3,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-const APIS = require('../src/api/index')
 
 module.exports = {
   dev: {
@@ -12,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/API': {
-            target: APIS.api,
-            changeOrigin: true,     //是否允许跨越
-            pathRewrite: {
-                '^/API': '/'
-            }
-        }
+        // '/API': {
+        //     target: APIS.api,
+        //     changeOrigin: true,     //是否允许跨越
+        //     pathRewrite: {
+        //         '^/API': '/'
+        //     }
+        // }
     },
 
     // Various Dev Server settings
@@ -52,7 +51,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

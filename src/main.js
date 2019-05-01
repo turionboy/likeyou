@@ -40,7 +40,7 @@ axios.interceptors.response.use(function(response) {
 // jq
 // import $ from 'jquery'
 
-Vue.prototype.API = process.env.API_ROOT
+Vue.prototype.API = 'https://www.zhanjf.xyz:8888'
 
 /* eslint-disable no-new */
 new Vue({

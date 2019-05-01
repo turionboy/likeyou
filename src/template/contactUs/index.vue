@@ -2,7 +2,7 @@
 	<div class="contactUs">
 		<div class="title">联系我们</div>
 		<div class="context">
-			<div class="code"><img src="/static/imgs/code.png" alt=""></div>
+			<div class="code"><img src="https://www.zhanjf.xyz/files/code.png" alt=""></div>
 			<div class="address">
 				<p>邮箱：13660493601@163.com</p>
 				<p>手机号码：13660493601</p>
@@ -109,9 +109,9 @@
 
 <style scoped="scoped">
 	.contactUs{background: #333;height: 300px;color: #fff;padding: 0 5%}
-	.title{font-size: 2rem;padding: 20px;}
-	.context{display: flex;flex-direction: row;}
-	.code{width: 150px;height: 150px;}
+	.title{font-size: 2rem;padding: 20px 0;}
+	.context{display: flex;flex-direction: row;justify-content: space-around;}
+	.code{width: 17rem;height: 17rem;}
 	img{width: 100%;height: 100%}
 	.address{font-size: 0.8rem;margin: 0 20px;}
 	.menuList{display: flex;flex-direction: row;font-size: 0.8rem;line-height: 30px;margin: 0 20px;width: 20%;flex-wrap: wrap;}
@@ -121,4 +121,16 @@
 	.child{}
 	.child_item{margin-right: 10px}
 	.child_item:hover{color: orange}
+
+	@media screen and (max-width: 1200px){
+		.menuList{width: 100%;}
+		.code{height: 8rem}
+	}
+	@media screen and (max-width: 500px){
+		.contactUs{padding: 0 0 0 20px;}
+		.code{display: none;}
+		.address{margin: 0;}
+		.title{padding: 20px 0 0 0;}
+	}
+
 </style>

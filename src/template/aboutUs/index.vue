@@ -21,7 +21,7 @@
 			<svg height="100%" width="100%">
 				<polygon points="0,0 500,0 0,500" fill="#333"></polygon>
 			</svg>
-			<section class="section_com">
+			<section class="section_com" style="color: orange">
 				<div class="title">团队介绍</div>
 				<div class="company_desc">
 					<p>团队组成：前端、后端</p>
@@ -63,4 +63,8 @@
 	.section_com{position: absolute;width: 100%;height: 100%;top: 20px;display: flex;flex-direction: column;justify-content: center;align-items: center;padding: 0 25%;}
 	.title{font-weight: bold;font-size: 2rem}
 	.company_desc{font-size: .8rem;}
+
+	@media screen and (max-width: 1200px){
+		.section_com{padding: 0 15%;}
+	}
 </style>

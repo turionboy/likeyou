@@ -8,7 +8,7 @@
                 <i :class="item.className"></i>
             </span>
             <div class="qrcode" v-if="isShowCode">
-                <img src="static/imgs/code.png">
+                <img src="https://www.zhanjf.xyz/files/code.png">
             </div>
         </div>
 
@@ -117,6 +117,7 @@
 <style>
     @import "./assets/css/style.css";
     @import "./assets/css/font/IconFonts.css";
+    *{font-size: 13px;}
     .toolbar{position: fixed;bottom: 20px;right: 10%;z-index: 10;display: flex;flex-direction: column;}
     .toolbar_item{background: #fff;cursor: pointer;width: 50px;height: 50px;line-height: 50px;font-size: 1.2rem;text-align: center;color:rgb(85,85,85);}
     .toolbar_text{font-size: .7rem;}

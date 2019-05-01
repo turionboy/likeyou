@@ -8,14 +8,14 @@
 		<div class="scens">
 			<div class="title">/ 景点</div>
 			<div class="scensList">
-				<div class="scensList_item" v-for="item,index in scensList">
+				<div class="scensList_item" v-for="item,index in scensList" @click="toDetailProduct(item)">
 					<div class="item_title">
 						<span style="background: orange;padding: 5px 12px;color: #fff">{{ index+1 }}</span> {{ item.title }}
 					</div>
 					<div style="overflow: hidden;">
-						<img class="item_img" :src="item.imgUrl" />
-						<span>{{ item.content }}</span>
+						<img class="item_img" :src="item.imgUrl_l" />
 					</div>
+					<div>{{ item.context }}</div>
 				</div>
 			</div>
 			<div class="loading_more" v-if="!isNull">加载更多</div>
@@ -24,52 +24,34 @@
 		<div class="scens">
 			<div class="title">/ 住宿</div>
 			<div class="scensList">
-				<div class="scensList_item" v-for="item,index in hotelList">
+				<div class="scensList_item" v-for="item,index in hotelList" @click="showHotel(item)">
 					<div class="item_title">
 						<span style="background: orange;padding: 5px 12px;color: #fff">{{ index+1 }}</span> {{ item.title }}
 					</div>
 					<div style="overflow: hidden;">
-						<img class="item_img" :src="item.imgUrl" />
-						<span>{{ item.content }}</span>
+						<img class="item_img" :src="item.imgUrl" />						
 					</div>
+					<div>{{ item.description }}</div>
 				</div>
 			</div>
 			<div class="loading_more" v-if="!isNull">加载更多</div>
 			<div class="loading_more" v-else>无更多信息</div>
 		</div>
+		<div class="hotelDetail" v-if="isShowHotel">
+			
+		</div>
 	</div>
 </template>
 
 <script>
+	// import hotelDetail from '../hotelDetail/index'
 	
 	export default({
 		name: 'productTour',
 		data() {
 			return {
 				city: '广州',
-				scensList: [
-					{
-						id: 0,
-						imgUrl: 'https://p2-q.mafengwo.net/s10/M00/A0/51/wKgBZ1m1GOaARk_EADxTppCJcxM97.jpeg?imageMogr2%2Fthumbnail%2F%21296x156r%2Fgravity%2FCenter%2Fcrop%2F%21296x156%2Fquality%2F100',
-						title: '沙面+圣心大教堂+上下九',
-						content: '发送旅客就是锻炼腹肌老师多级分类经费落实经费两件事雷锋精神快乐激发了开始激发了开始的积分粮食店街法律快速的减肥设计费绿色减肥了类似绝地反击设计费了多少分可是对方开始懂了飞机上的浪费凯撒简单概括哈哈发看好卡废话的卡好卡'
-					},{
-						id: 1,
-						imgUrl: 'https://b3-q.mafengwo.net/s10/M00/B6/D1/wKgBZ1mB4b6AXRjpAADupCtpW1Y475.png',
-						title: '长隆欢乐世界+长隆水上乐园',
-						content: '粉红色教师的覅阿凡达更好阿斗佛法安静给I了都给I大家哦家家啊来给大家哦啊过来jog龙卷风感觉是立法机关哦受浪费时间工具上来说哦哦就的风格很干净啊借口递进偶然连连看覅安静的过激进I人数及埃及I结果就覅的计算机工商局电视剧风格十几个急死感觉I日'
-					},{
-						id: 2,
-						imgUrl: 'https://b3-q.mafengwo.net/s10/M00/B6/D1/wKgBZ1mB4b6AXRjpAADupCtpW1Y475.png',
-						title: '长隆欢乐世界+长隆水上乐园',
-						content: '粉红色教师的覅阿凡达更好阿斗佛法安静给I了都给I大家哦家家啊来给大家哦啊过来jog龙卷风感觉是立法机关哦受浪费时间工具上来说哦哦就的风格很干净啊借口递进偶然连连看覅安静的过激进I人数及埃及I结果就覅的计算机工商局电视剧风格十几个急死感觉I日'
-					},{
-						id: 3,
-						imgUrl: 'https://b3-q.mafengwo.net/s10/M00/B6/D1/wKgBZ1mB4b6AXRjpAADupCtpW1Y475.png',
-						title: '长隆欢乐世界+长隆水上乐园',
-						content: '粉红色教师的覅阿凡达更好阿斗佛法安静给I了都给I大家哦家家啊来给大家哦啊过来jog龙卷风感觉是立法机关哦受浪费时间工具上来说哦哦就的风格很干净啊借口递进偶然连连看覅安静的过激进I人数及埃及I结果就覅的计算机工商局电视剧风格十几个急死感觉I日'
-					}
-				],
+				scensList: [],
 				hotelList: [
 					{
 						id: 0,
@@ -92,17 +74,53 @@
 						imgUrl: 'https://p3-q.mafengwo.net/s13/M00/80/2B/wKgEaVx-TtCADIiWAAI7i7LaGBQ01.jpeg?imageMogr2%2Fthumbnail%2F%21660x480r%2Fgravity%2FCenter%2Fcrop%2F%21660x480%2Fquality%2F90',
 						content: '放假水豆腐静安寺按实际发来得及I家假按揭I家点击放大会计系接送机理想的开房间奥迪减肥零度空间覅奇偶的积分圣诞节付款江西的肌肤链接深刻的减肥io啊石'
 					}
-				]
+				],
+				isShowHotel: false,
+				isNull: true,
+
 			}
 		},
+		components:{
+			// hotelDetail,
+		},
 		created: function(){
-
+			if(!this.$store.state.city_id)
+				this.$store.commit('setCity_id', 11);
 		},
 		mounted: function(){
-
+			$(document).scrollTop(0);
+			this.$axios.get(this.API + '/api/user/city/'+this.$store.state.city_id).then(res => {
+				this.city = res.data.result.name;
+			}).catch(err => {})
+			this.getScene();
+			this.getHotel();
 		},
 		methods: {
+			getScene() {
+				this.$axios.get(this.API + '/api/user/scene?city_id='+this.$store.state.city_id).then(res => {
+					this.scensList = res.data.result;
+				}).catch(err => {
 
+				})
+			},
+			getHotel() {
+				this.$axios.get(this.API + '/api/user/hotel').then(res => {
+					this.hotelList = res.data.result;
+				}).catch(err => {
+
+				})
+			},
+			// 跳转至景点详情
+			toDetailProduct(item) {
+				this.$store.commit('setScene_id', item.id);
+				this.$router.push({
+					path: '/detail_product'
+				});
+			},
+			// 显示住宿详情
+			showHotel(item){
+				this.isShowHotel = true;
+			}
 		}
 	})
 </script>
@@ -113,11 +131,15 @@
 	.title{padding: 10px;font-size: 1.2em;text-shadow: 5px 5px 5px orange;}
 	.city{position: relative;text-align: center;font-weight: bold;font-size: 2.3em;text-shadow: 5px 5px 5px orange;}
 	.changeCity{position: absolute;top:0;right: 0;font-size: .8rem;text-shadow: none;height: 100%;display: flex;align-items: center;cursor: pointer;}
-	.scensList{display: flex;justify-content: space-around;flex-direction: row;flex-wrap: wrap;}
-	.scensList_item{width: 40%;cursor: pointer;padding: 5px 20px;border: 1px solid orange;margin-bottom: 15px;}
+	.scensList{display: flex;justify-content: space-around;flex-direction: row;flex-wrap: wrap;justify-content: space-between;}
+	.scensList_item{width: 45%;cursor: pointer;padding: 5px 20px;border: 1px solid orange;margin-bottom: 15px;}
 	.scensList_item:hover .item_title{color: orange}
-	.scensList_item:hover .item_img{transform: scale(1.2,1.2);}
+	.scensList_item:hover .item_img{transition: transform 0.5s;transform: rotate(360deg);}
 	.item_title{font-size: 1.1em;margin: 10px 0;}
 	.loading_more{text-align: center;cursor: pointer;}
 	.loading_more:hover{color: orange;}
+
+	@media screen and (max-width: 1200px){
+		.productTour{padding: 20px 4%;}
+	}
 </style>
